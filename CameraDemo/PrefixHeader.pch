@@ -13,12 +13,33 @@
 #import "XcwHUD.h"
 #import <Masonry/Masonry.h>
 #import "UIImageView+WebCache.h"
+#import "RYUtils.h"
+#import "InforModel.h"
+#import "LoginDataModel.h"
+#import "LoginModel.h"
 #define BaseURL @"http://app.makeupscientist.com/mus"
 
 #define TOP (SCREENHEIGHT-220)/2
 #define LEFT (SCREENWIDTH-220)/2
+#define D_width SCREENWIDTH/375
+#define D_height SCREENHEIGHT/667
 
 #define kScanRect CGRectMake(LEFT, TOP, 220, 220)
+#define KNavigationBgColor RGBA(236, 189, 80, 1)
+
+//Downloader
+#define DOCUMENTS_FOLDER    [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/"]
+#define kNetWorkErrorString @"网络错误"
+#define kAllDataLoaded      @"已加载完所有数据"
+#define USHARE_DEMO_APPKEY  @"59f99acf734be411fe00001e"//分享
+
+#define UMessage_DEMO_APPKEY  @"5a177ccab27b0a1aaa000155"//推送
+
+//App Constant Values
+#define kLoginUserDataFile                  @"LoginUserDataFile"
+#define kLoginInDataFile @"LoginInDataFile"
+
+
 
 //正常地址
 #define k_BASE_URL(url) [NSString stringWithFormat:@"%@%@",BaseURL,url]
@@ -38,6 +59,19 @@
 #define KScreenWidth [UIScreen mainScreen].bounds.size.width
 #define KScreenHeight [UIScreen mainScreen].bounds.size.height
 
+// View 圆角和加边框
+#define ViewBorderRadius(View, Radius, Width, Color)\
+\
+[View.layer setCornerRadius:(Radius)];\
+[View.layer setMasksToBounds:YES];\
+[View.layer setBorderWidth:(Width)];\
+[View.layer setBorderColor:[Color CGColor]]
+
+// View 圆角
+#define ViewRadius(View, Radius)\
+\
+[View.layer setCornerRadius:(Radius)];\
+[View.layer setMasksToBounds:YES]
 
 
 #define RGBA(r,g,b,a)                  [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]

@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewXian : UIView
+@property (weak, nonatomic) IBOutlet UIView *View1;
+@property (weak, nonatomic) IBOutlet UIView *View2;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *ViewCenter;
 
 @end

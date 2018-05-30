@@ -9,4 +9,7 @@ target 'CameraDemo' do
 
     pod 'GPUImage'
     pod ‘Masonry’
+    pod 'AFNetworking'
+    pod 'SDCycleScrollView'
+    pod 'YYKit'
 end

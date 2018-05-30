@@ -20,12 +20,26 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Branner.png" translatesAutoresizingMaskIntoConstraints="NO" id="3lC-qw-MFU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="3lC-qw-MFU" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="3qu-6e-GtF"/>
+                            <constraint firstItem="hIg-Np-Wa9" firstAttribute="top" secondItem="3lC-qw-MFU" secondAttribute="bottom" id="CFM-7r-IcS"/>
+                            <constraint firstItem="3lC-qw-MFU" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="NTj-Cm-uiY"/>
+                            <constraint firstAttribute="trailing" secondItem="3lC-qw-MFU" secondAttribute="trailing" id="kI9-QE-XQs"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Branner.png" width="750" height="1334"/>
+    </resources>
 </document>

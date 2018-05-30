@@ -1,13 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AorBViewController">
             <connections>
+                <outlet property="ButAlbum" destination="rh7-wY-FOI" id="oBv-eH-Gri"/>
+                <outlet property="ButClose" destination="gvQ-9c-upr" id="aSz-dw-yCE"/>
+                <outlet property="ButFlshOpen" destination="HjS-7L-QFl" id="wIF-Yw-DPl"/>
+                <outlet property="ButQieHuan" destination="xta-z2-Y1O" id="I13-j0-u7u"/>
+                <outlet property="ButTakePhoto" destination="8Mv-Pa-Of1" id="wmx-qI-MqM"/>
+                <outlet property="ViewPhotoCream" destination="9Vn-aD-lE0" id="8Rw-aH-j8x"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,8 +24,104 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTS-kA-u4H">
+                    <rect key="frame" x="0.0" y="20" width="375" height="47"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xta-z2-Y1O">
+                            <rect key="frame" x="342" y="12" width="23" height="23"/>
+                            <state key="normal" image="QieHuan"/>
+                            <connections>
+                                <action selector="ButQieHuanClick:" destination="-1" eventType="touchUpInside" id="wfy-Dj-mGi"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HjS-7L-QFl">
+                            <rect key="frame" x="10" y="11.5" width="24" height="24"/>
+                            <state key="normal" image="flashOpen"/>
+                            <connections>
+                                <action selector="ButFlshOpenClick:" destination="-1" eventType="touchUpInside" id="26v-A5-M8d"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="47" id="0DO-Tq-1PD"/>
+                        <constraint firstItem="xta-z2-Y1O" firstAttribute="centerY" secondItem="wTS-kA-u4H" secondAttribute="centerY" id="6mp-Yc-R7V"/>
+                        <constraint firstItem="HjS-7L-QFl" firstAttribute="leading" secondItem="wTS-kA-u4H" secondAttribute="leading" constant="10" id="Ezc-j0-E8e"/>
+                        <constraint firstAttribute="trailing" secondItem="xta-z2-Y1O" secondAttribute="trailing" constant="10" id="JAA-pz-uyg"/>
+                        <constraint firstItem="HjS-7L-QFl" firstAttribute="centerY" secondItem="wTS-kA-u4H" secondAttribute="centerY" id="kys-81-hto"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Vn-aD-lE0">
+                    <rect key="frame" x="0.0" y="67" width="375" height="470"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IzS-qX-bqd">
+                    <rect key="frame" x="0.0" y="537" width="375" height="130"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvQ-9c-upr">
+                            <rect key="frame" x="20" y="53" width="25" height="25"/>
+                            <state key="normal" image="CloseBut"/>
+                            <connections>
+                                <action selector="ButCloseClick:" destination="-1" eventType="touchUpInside" id="bZi-Du-AJA"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Mv-Pa-Of1">
+                            <rect key="frame" x="154.5" y="32.5" width="65" height="65"/>
+                            <state key="normal" image="TakePhoto-1"/>
+                            <connections>
+                                <action selector="ButTakePhotoClick:" destination="-1" eventType="touchUpInside" id="wnA-GJ-DWB"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rh7-wY-FOI">
+                            <rect key="frame" x="330" y="52.5" width="25" height="25"/>
+                            <state key="normal" image="PhotoIn-1"/>
+                            <connections>
+                                <action selector="ButAlbumClick:" destination="-1" eventType="touchUpInside" id="uL1-Ci-rfd"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="130" id="5TS-qM-OZp"/>
+                        <constraint firstItem="gvQ-9c-upr" firstAttribute="centerY" secondItem="IzS-qX-bqd" secondAttribute="centerY" id="RsD-uv-kio"/>
+                        <constraint firstItem="rh7-wY-FOI" firstAttribute="centerY" secondItem="8Mv-Pa-Of1" secondAttribute="centerY" id="WXc-02-X97"/>
+                        <constraint firstItem="8Mv-Pa-Of1" firstAttribute="centerX" secondItem="IzS-qX-bqd" secondAttribute="centerX" id="ahg-6g-obz"/>
+                        <constraint firstItem="gvQ-9c-upr" firstAttribute="leading" secondItem="IzS-qX-bqd" secondAttribute="leading" constant="20" id="bdl-HD-6yf"/>
+                        <constraint firstAttribute="trailing" secondItem="rh7-wY-FOI" secondAttribute="trailing" constant="20" id="dda-Nd-7Hx"/>
+                        <constraint firstItem="8Mv-Pa-Of1" firstAttribute="centerY" secondItem="IzS-qX-bqd" secondAttribute="centerY" id="fpU-NN-8eg"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rKl-vS-foc">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="rKl-vS-foc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="47f-eq-cfR"/>
+                <constraint firstItem="9Vn-aD-lE0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="5b9-Kw-7Ec"/>
+                <constraint firstAttribute="trailing" secondItem="rKl-vS-foc" secondAttribute="trailing" id="8eQ-Bu-IQ7"/>
+                <constraint firstItem="IzS-qX-bqd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="8nK-zT-3KZ"/>
+                <constraint firstItem="wTS-kA-u4H" firstAttribute="top" secondItem="rKl-vS-foc" secondAttribute="bottom" id="AiR-1z-eTI"/>
+                <constraint firstAttribute="trailing" secondItem="9Vn-aD-lE0" secondAttribute="trailing" id="Bqu-1k-wU4"/>
+                <constraint firstAttribute="trailing" secondItem="IzS-qX-bqd" secondAttribute="trailing" id="GRn-WW-e3r"/>
+                <constraint firstItem="9Vn-aD-lE0" firstAttribute="top" secondItem="wTS-kA-u4H" secondAttribute="bottom" id="HBk-YL-8ZN"/>
+                <constraint firstAttribute="bottom" secondItem="IzS-qX-bqd" secondAttribute="bottom" id="Zml-Er-m88"/>
+                <constraint firstItem="wTS-kA-u4H" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bAP-jV-MTe"/>
+                <constraint firstItem="rKl-vS-foc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tbd-t5-xds"/>
+                <constraint firstItem="wTS-kA-u4H" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="tjx-hn-EfY"/>
+                <constraint firstItem="IzS-qX-bqd" firstAttribute="top" secondItem="9Vn-aD-lE0" secondAttribute="bottom" id="uoS-DP-swF"/>
+                <constraint firstAttribute="trailing" secondItem="wTS-kA-u4H" secondAttribute="trailing" id="xVD-eG-iDp"/>
+            </constraints>
+            <point key="canvasLocation" x="34.5" y="113.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="CloseBut" width="25" height="25"/>
+        <image name="PhotoIn-1" width="25" height="25"/>
+        <image name="QieHuan" width="23" height="23"/>
+        <image name="TakePhoto-1" width="65" height="65"/>
+        <image name="flashOpen" width="24" height="24"/>
+    </resources>
 </document>

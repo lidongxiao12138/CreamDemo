@@ -6,11 +6,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController">
             <connections>
+                <outlet property="ViewCDDTit" destination="L1L-xN-0Df" id="jKa-V0-Zf5"/>
+                <outlet property="ViewCycle" destination="NIi-jq-q9O" id="db6-iM-Q8E"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,46 +23,89 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xN2-NI-Y3h">
-                    <rect key="frame" x="34" y="524" width="95" height="34"/>
-                    <color key="backgroundColor" red="0.39607843139999999" green="0.69803921570000005" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="95" id="IfG-TC-HUO"/>
-                    </constraints>
-                    <state key="normal" title="男士眉形">
+                    <rect key="frame" x="214" y="439" width="77" height="77"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="man-1">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="ButCameraClick:" destination="-1" eventType="touchUpInside" id="00N-ci-Ygu"/>
+                        <action selector="ButCameraClick:" destination="-1" eventType="touchUpInside" id="mEt-Zw-PZ8"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PeoplePhoto.png" translatesAutoresizingMaskIntoConstraints="NO" id="slz-yD-Frq">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="471"/>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UG5-Id-WHQ">
-                    <rect key="frame" x="247" y="524" width="95" height="34"/>
-                    <color key="backgroundColor" red="0.83409598210000002" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="女士眉形"/>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UG5-Id-WHQ">
+                    <rect key="frame" x="84" y="439" width="77" height="77"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="woman"/>
                     <connections>
-                        <action selector="ButCameraClick:" destination="-1" eventType="touchUpInside" id="HoC-H3-5Y7"/>
+                        <action selector="ButCameraClick:" destination="-1" eventType="touchUpInside" id="EvT-mj-42C"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GoScr" translatesAutoresizingMaskIntoConstraints="NO" id="FqO-rc-klQ">
+                    <rect key="frame" x="45" y="604" width="45" height="43"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1L-xN-0Df">
+                    <rect key="frame" x="98" y="604" width="265" height="43"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="43" id="g0L-Ux-PHg"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NIi-jq-q9O">
+                    <rect key="frame" x="30" y="30" width="315" height="378"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="NIi-jq-q9O" secondAttribute="height" multiplier="5:6" id="yff-Gy-2qR"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6P-wh-Va0">
+                    <rect key="frame" x="10" y="35" width="30" height="30"/>
+                    <state key="normal" image="GoBack-1"/>
+                    <connections>
+                        <action selector="ButGoBackClick:" destination="-1" eventType="touchUpInside" id="XTN-hQ-sZs"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="男士眉形" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9q-SV-wVw">
+                    <rect key="frame" x="222" y="524" width="61.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="女士眉形" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78V-oQ-LuF">
+                    <rect key="frame" x="91" y="524" width="62" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="xN2-NI-Y3h" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="34" id="AVY-Eb-xeb"/>
-                <constraint firstAttribute="bottom" secondItem="slz-yD-Frq" secondAttribute="bottom" constant="196" id="CBT-Di-5Ac"/>
-                <constraint firstAttribute="trailing" secondItem="slz-yD-Frq" secondAttribute="trailing" id="FbR-um-hgN"/>
-                <constraint firstItem="UG5-Id-WHQ" firstAttribute="centerY" secondItem="xN2-NI-Y3h" secondAttribute="centerY" id="WSf-OZ-7IA"/>
-                <constraint firstItem="slz-yD-Frq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kpz-Z0-PjO"/>
-                <constraint firstItem="xN2-NI-Y3h" firstAttribute="width" secondItem="UG5-Id-WHQ" secondAttribute="width" id="qXC-DK-srs"/>
-                <constraint firstItem="slz-yD-Frq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="srN-ld-BBL"/>
-                <constraint firstItem="xN2-NI-Y3h" firstAttribute="top" secondItem="slz-yD-Frq" secondAttribute="bottom" constant="53" id="taJ-uk-Wr4"/>
-                <constraint firstAttribute="trailing" secondItem="UG5-Id-WHQ" secondAttribute="trailing" constant="33" id="xIq-Mo-8Ib"/>
+                <constraint firstItem="FqO-rc-klQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="45" id="1rg-4I-4dJ"/>
+                <constraint firstItem="NIi-jq-q9O" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="8hg-TQ-gMH"/>
+                <constraint firstItem="u6P-wh-Va0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="EHE-gz-PpF"/>
+                <constraint firstAttribute="bottom" secondItem="L1L-xN-0Df" secondAttribute="bottom" constant="20" id="Eto-T4-BGh"/>
+                <constraint firstItem="78V-oQ-LuF" firstAttribute="top" secondItem="UG5-Id-WHQ" secondAttribute="bottom" constant="8" id="HKH-HP-uNl"/>
+                <constraint firstItem="78V-oQ-LuF" firstAttribute="centerX" secondItem="UG5-Id-WHQ" secondAttribute="centerX" id="LYn-mb-VWV"/>
+                <constraint firstAttribute="trailing" secondItem="xN2-NI-Y3h" secondAttribute="trailing" constant="84" id="NOd-CM-sIQ"/>
+                <constraint firstItem="F9q-SV-wVw" firstAttribute="centerY" secondItem="78V-oQ-LuF" secondAttribute="centerY" id="R9G-1P-Zse"/>
+                <constraint firstItem="L1L-xN-0Df" firstAttribute="leading" secondItem="FqO-rc-klQ" secondAttribute="trailing" constant="8" id="VSw-fp-ZHb"/>
+                <constraint firstItem="NIi-jq-q9O" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="WPN-JG-FHJ"/>
+                <constraint firstAttribute="trailing" secondItem="NIi-jq-q9O" secondAttribute="trailing" constant="30" id="WaM-vP-Poz"/>
+                <constraint firstItem="xN2-NI-Y3h" firstAttribute="centerY" secondItem="UG5-Id-WHQ" secondAttribute="centerY" id="ZV4-49-4TG"/>
+                <constraint firstItem="F9q-SV-wVw" firstAttribute="top" secondItem="xN2-NI-Y3h" secondAttribute="bottom" constant="8" id="ceU-V3-rP2"/>
+                <constraint firstItem="F9q-SV-wVw" firstAttribute="centerX" secondItem="xN2-NI-Y3h" secondAttribute="centerX" id="dKQ-Cq-rj3"/>
+                <constraint firstItem="UG5-Id-WHQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="84" id="fKR-ob-T2M"/>
+                <constraint firstAttribute="trailing" secondItem="L1L-xN-0Df" secondAttribute="trailing" constant="12" id="gtV-tM-fnG"/>
+                <constraint firstAttribute="bottom" secondItem="FqO-rc-klQ" secondAttribute="bottom" constant="20" id="lKo-1O-Xxf"/>
+                <constraint firstItem="u6P-wh-Va0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="35" id="o4x-nq-HXr"/>
+                <constraint firstItem="xN2-NI-Y3h" firstAttribute="top" secondItem="NIi-jq-q9O" secondAttribute="bottom" constant="31" id="ryc-11-0Xa"/>
+                <constraint firstItem="L1L-xN-0Df" firstAttribute="top" secondItem="78V-oQ-LuF" secondAttribute="bottom" constant="62" id="vz1-6r-9Pr"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
     <resources>
-        <image name="PeoplePhoto.png" width="1840" height="2758"/>
+        <image name="GoBack-1" width="30" height="30"/>
+        <image name="GoScr" width="45" height="43"/>
+        <image name="man-1" width="77" height="77"/>
+        <image name="woman" width="77" height="77"/>
     </resources>
 </document>

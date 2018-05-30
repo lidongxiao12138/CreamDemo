@@ -29,6 +29,9 @@
                 <constraint firstAttribute="bottom" secondItem="0XI-on-imk" secondAttribute="bottom" id="8xw-uU-dkw"/>
                 <constraint firstItem="0XI-on-imk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="GUb-vu-PoX"/>
             </constraints>
+            <connections>
+                <outlet property="ImageBrow" destination="0XI-on-imk" id="Uiw-cG-hGq"/>
+            </connections>
             <point key="canvasLocation" x="108.5" y="96.5"/>
         </collectionViewCell>
     </objects>

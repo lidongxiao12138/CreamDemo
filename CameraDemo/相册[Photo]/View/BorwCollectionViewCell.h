@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface BorwCollectionViewCell : UICollectionViewCell
-
+@property (weak, nonatomic) IBOutlet UIImageView *ImageBrow;
+-(void)getInfo:(NSString *)Str;
 @end

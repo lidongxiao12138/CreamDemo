@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "HomeViewController.h"
+#import "SupperViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -19,7 +19,7 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
-    HomeViewController * tempVc = [HomeViewController new];
+    SupperViewController * tempVc = [SupperViewController new];
     UINavigationController* tempNv = [[UINavigationController alloc] initWithRootViewController:tempVc];
     [self.window setRootViewController:tempNv];
     [self.window makeKeyAndVisible];

@@ -14,5 +14,13 @@
     [super awakeFromNib];
     // Initialization code
 }
-
+-(void)getInfo:(NSString *)Str
+{
+    if ([Str isEqual: @"1"]) {
+        [self.ImageBrow setBackgroundColor:[UIColor blackColor]];
+    }else if ([Str isEqual: @"2"])
+    {
+        [self.ImageBrow setBackgroundColor:[UIColor brownColor]];
+    }
+}
 @end

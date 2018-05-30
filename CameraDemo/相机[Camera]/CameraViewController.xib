@@ -34,7 +34,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="503"/>
                     <subviews>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uuf-mB-Ldv">
-                            <rect key="frame" x="20" y="31" width="24" height="24"/>
+                            <rect key="frame" x="20" y="31" width="33" height="34"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             <state key="normal" image="GoBack"/>
                         </button>
@@ -60,8 +60,8 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z7y-Xk-GPb">
-                            <rect key="frame" x="171" y="44" width="32" height="32"/>
-                            <state key="normal" image="TakePhoto">
+                            <rect key="frame" x="154.5" y="27.5" width="65" height="65"/>
+                            <state key="normal" image="TakePhoto-1">
                                 <color key="titleColor" red="0.92549019610000005" green="0.74117647060000003" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                         </button>
@@ -72,24 +72,16 @@
                                 <color key="titleColor" red="0.92549019610000005" green="0.74117647060000003" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="拍摄" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjl-rr-jjZ">
-                            <rect key="frame" x="169.5" y="84" width="35" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.92549019610000005" green="0.74117647060000003" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="z7y-Xk-GPb" firstAttribute="centerX" secondItem="3ia-Jo-3dv" secondAttribute="centerX" id="Emw-1g-ylo"/>
                         <constraint firstItem="z7y-Xk-GPb" firstAttribute="centerY" secondItem="3ia-Jo-3dv" secondAttribute="centerY" id="N9v-b9-u5y"/>
                         <constraint firstAttribute="height" constant="120" id="RGT-6E-Zd9"/>
-                        <constraint firstItem="rjl-rr-jjZ" firstAttribute="centerX" secondItem="z7y-Xk-GPb" secondAttribute="centerX" id="TH8-eC-bnR"/>
                         <constraint firstItem="xJA-dT-rMW" firstAttribute="centerY" secondItem="z7y-Xk-GPb" secondAttribute="centerY" id="Tx5-0v-HvH"/>
                         <constraint firstItem="F0Z-7j-UK9" firstAttribute="leading" secondItem="3ia-Jo-3dv" secondAttribute="leading" constant="40" id="XWF-lt-l0h"/>
                         <constraint firstItem="F0Z-7j-UK9" firstAttribute="centerY" secondItem="3ia-Jo-3dv" secondAttribute="centerY" id="ZwL-sK-gOL"/>
                         <constraint firstAttribute="trailing" secondItem="xJA-dT-rMW" secondAttribute="trailing" constant="20" id="bu3-Wk-NTe"/>
-                        <constraint firstItem="rjl-rr-jjZ" firstAttribute="top" secondItem="z7y-Xk-GPb" secondAttribute="bottom" constant="8" id="vsd-rR-9gp"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="moe-5M-Aqg">
@@ -126,7 +118,7 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byh-rK-Oa9">
                             <rect key="frame" x="230" y="12" width="20" height="20"/>
-                            <state key="normal" image="PhotoIn">
+                            <state key="normal" image="PhotoIn-1">
                                 <color key="titleColor" red="0.92549019610000005" green="0.74117647060000003" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                         </button>
@@ -141,6 +133,7 @@
                         <constraint firstItem="byh-rK-Oa9" firstAttribute="centerY" secondItem="7EY-ka-MBK" secondAttribute="centerY" id="ORi-YG-vvl"/>
                         <constraint firstItem="byh-rK-Oa9" firstAttribute="height" secondItem="7EY-ka-MBK" secondAttribute="height" id="PZT-rR-v22"/>
                         <constraint firstItem="7EY-ka-MBK" firstAttribute="height" secondItem="83L-fY-gSn" secondAttribute="height" id="U2m-HN-mqT"/>
+                        <constraint firstAttribute="trailing" secondItem="KEr-sw-0bj" secondAttribute="trailing" constant="25" id="XTG-Oi-3tx"/>
                         <constraint firstItem="KEr-sw-0bj" firstAttribute="width" secondItem="byh-rK-Oa9" secondAttribute="width" id="Xez-bl-CYW"/>
                         <constraint firstItem="83L-fY-gSn" firstAttribute="leading" secondItem="moe-5M-Aqg" secondAttribute="leading" constant="20" id="bXe-KF-ZmM"/>
                         <constraint firstItem="83L-fY-gSn" firstAttribute="centerY" secondItem="moe-5M-Aqg" secondAttribute="centerY" id="cHV-N4-SAd"/>
@@ -172,10 +165,10 @@
     </objects>
     <resources>
         <image name="Back" width="114" height="115"/>
-        <image name="GoBack" width="24" height="24"/>
-        <image name="PhotoIn" width="69" height="59"/>
+        <image name="GoBack" width="33" height="34"/>
+        <image name="PhotoIn-1" width="25" height="25"/>
         <image name="Reverse" width="66" height="68"/>
-        <image name="TakePhoto" width="32" height="32"/>
+        <image name="TakePhoto-1" width="65" height="65"/>
         <image name="flash" width="45" height="58"/>
         <image name="protion" width="60" height="71"/>
     </resources>

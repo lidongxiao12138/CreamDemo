@@ -14,6 +14,8 @@
 #import "GPUImageBeautifyFilter.h"
 #import "SVProgressHUD.h"
 #import <Photos/Photos.h>
+#import "ZLDefine.h"
+#import "FSKGPUImageBeautyFilter.h"
 #define kScreenBounds   [UIScreen mainScreen].bounds
 
 @interface CameraViewController ()<AVCaptureMetadataOutputObjectsDelegate,UIAlertViewDelegate,UINavigationControllerDelegate>
@@ -38,9 +40,40 @@
 @property(strong,nonatomic)GPUImageStillCamera *myCamera;
 @property(strong,nonatomic)GPUImageView *myGPUImageView;
 @property(strong,nonatomic)GPUImageFilter *myFilter;
+
+@property (nonatomic,strong)GPUImageOutput<GPUImageInput> *filter;
+@property (nonatomic,strong)GPUImageOutput<GPUImageInput> *filter1;
+@property (nonatomic,strong)GPUImageFilterGroup *filterGroup;
+
 @property(nonatomic,retain)AVCaptureSession * AVSession;
 
-
+//CGImageRef cgref = [self.PhotoImage CGImage];
+//if (cgref == NULL) {
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        ZLOnePhoto *one = [ZLOnePhoto shareInstance];
+//        [one presentPicker:PickerType_Photo photoCut:PhotoCutType_NO target:self callBackBlock:^(UIImage *image, BOOL isCancel) {
+//            self.ImgPhoto.image = image;
+//            self.PhotoImage = image;
+//            if (isCancel == NO) {
+//                [self requsetUpImage];
+//            }else
+//            {
+//                [self dismissViewControllerAnimated:YES completion:^{
+//                    self.ImgPhoto.image = nil;
+//                }];
+//            }
+//
+//        }];
+//    });
+//}else
+//{
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        //inset code....
+//        self.ImgPhoto.image = self.PhotoImage;
+//        [self requsetUpImage];
+//    });
+//    //        [self handleImage:self.PhotoImage];
+//}
 
 @end
 
@@ -88,59 +121,28 @@
 }
 - (void)customCamera{
     
-    
     self.view.backgroundColor = [UIColor whiteColor];
     //初始化相机，第一个参数表示相册的尺寸，第二个参数表示前后摄像头
-    self.myCamera = [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionFront];
-    
-//    self.myCamera = [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
-    
+    self.myCamera = [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionFront];
     //竖屏方向
     self.myCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
     self.myCamera.horizontallyMirrorFrontFacingCamera = YES;
     self.myCamera.horizontallyMirrorRearFacingCamera = NO;
-    
-    //哈哈镜效果
-    GPUImageStretchDistortionFilter *stretchDistortionFilter = [[GPUImageStretchDistortionFilter alloc] init];
-    
-    //亮度
-    GPUImageBrightnessFilter *BrightnessFilter = [[GPUImageBrightnessFilter alloc] init];
-    
-    //伽马线滤镜
-    GPUImageGammaFilter *gammaFilter = [[GPUImageGammaFilter alloc] init];
-    
-    //边缘检测
-    GPUImageXYDerivativeFilter *XYDerivativeFilter = [[GPUImageXYDerivativeFilter alloc] init];
-    
-    //怀旧
-    GPUImageSepiaFilter *sepiaFilter = [[GPUImageSepiaFilter alloc] init];
-    
-    //反色
-    GPUImageColorInvertFilter *invertFilter = [[GPUImageColorInvertFilter alloc] init];
-    
-    //饱和度
-    GPUImageSaturationFilter *saturationFilter = [[GPUImageSaturationFilter alloc] init];
-    
-    //美颜
-    GPUImageBeautifyFilter *beautyFielter = [[GPUImageBeautifyFilter alloc] init];
-    
+
+    //精致美颜
+    FSKGPUImageBeautyFilter * fskImage = [[FSKGPUImageBeautyFilter alloc]init];
+    fskImage.brightLevel = 0.7;
+
     //初始化GPUImageView
     self.myGPUImageView = [[GPUImageView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight)];
-    
+
     //初始设置为哈哈镜效果
-    [self.myCamera addTarget:beautyFielter];
-    [beautyFielter addTarget:self.myGPUImageView];
-    self.myFilter = beautyFielter;
-    [self.view addSubview:self.myGPUImageView];
+    [self.myCamera addTarget:fskImage];
+    [fskImage addTarget:self.myGPUImageView];
+    self.myFilter = fskImage;
+    [self.ViewPhoto addSubview:self.myGPUImageView];
     [self.myCamera startCameraCapture];
 
-    [self.myCamera removeAllTargets];
-    GPUImageBeautifyFilter *beautifyFilter = [[GPUImageBeautifyFilter alloc] init];
-    [self.myCamera addTarget:beautifyFilter];
-    [beautifyFilter addTarget:self.myFilter];
-    
-    
-    
 }
 
 
@@ -192,7 +194,7 @@
         
         // Keep the session around
         [self setAVSession:self.AVSession];
-            }
+        }
 }
 //反转
 - (void)changeCamera{
@@ -201,10 +203,19 @@
 //相册
 -(void)ButPhotoClick
 {
-    PhotoViewController * photo = [[PhotoViewController alloc]init];
-    [self presentViewController:photo animated:NO completion:^{
-        
+    ZLOnePhoto *one = [ZLOnePhoto shareInstance];
+    [one presentPicker:PickerType_Photo photoCut:PhotoCutType_NO target:self callBackBlock:^(UIImage *image, BOOL isCancel) {
+        if (isCancel == NO) {
+            dispatch_async(dispatch_get_main_queue(), ^
+                           {
+                               PhotoViewController * photo = [[PhotoViewController alloc]init];
+                               photo.PhotoImage = image;
+                               [self presentViewController:photo animated:NO completion:^{
+                               }];
+                           });
+        }
     }];
+    
 }
 
 -(void)ButProtionClick
@@ -214,98 +225,77 @@
         Protion = NO;
     }else
     {
-       self.myCamera.captureSessionPreset = AVCaptureSessionPreset1280x720;
+       self.myCamera.captureSessionPreset = AVCaptureSessionPreset640x480;
         Protion = YES;
     }
 }
-
-
-
-////确定
-//-(void)ButSureClickSure
-//{
-//    //定格一张图片 保存到相册
-//    [self.myCamera capturePhotoAsPNGProcessedUpToFilter:self.myFilter withCompletionHandler:^(NSData *processedPNG, NSError *error) {
-//
-//        //拿到相册，需要引入Photo Kit
-//        [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-//            //写入图片到相册
-//            UIImage * image = [UIImage imageWithData:processedPNG];
-//            [self saveImageToPhotoAlbum:image];
-//
-//        } completionHandler:^(BOOL success, NSError * _Nullable error) {
-//            NSLog(@"success = %d, error = %@", success, error);
-//        }];
-//    }];
-//    if (OpenFlash == NO ) {
-//        [self FlashOn];
-//    }
-//}
-
-
-
 
 
 #pragma mark - 拍照
 //拍照
 - (void) shutterCamera
 {
-    
-//    [self.myCamera stopCameraCapture];
-    
-    //定格一张图片 保存到相册
-    [self.myCamera capturePhotoAsPNGProcessedUpToFilter:self.myFilter withCompletionHandler:^(NSData *processedPNG, NSError *error) {
 
+    [self.myCamera capturePhotoAsImageProcessedUpToFilter:self.myFilter withCompletionHandler:^(UIImage *processedImage, NSError *error) {
         //拿到相册，需要引入Photo Kit
         [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-            //写入图片到相册
-            UIImage * image = [UIImage imageWithData:processedPNG];
-            [self saveImageToPhotoAlbum:image];
-
+            
+            UIImageWriteToSavedPhotosAlbum(processedImage, nil, nil, nil);
+            [SVProgressHUD showSuccessWithStatus:@"保存成功"];
+            
+            dispatch_async(dispatch_get_main_queue(), ^
+                           {
+                               //写入图片到相册
+                               PhotoViewController * photo = [[PhotoViewController alloc]init];
+                               photo.PhotoImage = processedImage;
+                               [self.myCamera startCameraCapture];
+                               [self presentViewController:photo animated:NO completion:^{
+                                   
+                                   
+                               }];
+                           });
+            
         } completionHandler:^(BOOL success, NSError * _Nullable error) {
             NSLog(@"success = %d, error = %@", success, error);
         }];
     }];
+    
+    
+//    //定格一张图片 保存到相册
+//    [self.myCamera capturePhotoAsPNGProcessedUpToFilter:self.myFilter withCompletionHandler:^(NSData *processedPNG, NSError *error) {
+//
+//        //拿到相册，需要引入Photo Kit
+//        [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+//
+//            UIImage * image = [UIImage imageWithData:processedPNG];
+//            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+//            [SVProgressHUD showSuccessWithStatus:@"保存成功"];
+//
+//            dispatch_async(dispatch_get_main_queue(), ^
+//            {
+//                //写入图片到相册
+//                PhotoViewController * photo = [[PhotoViewController alloc]init];
+//                photo.PhotoImage = image;
+//                [self.myCamera startCameraCapture];
+//                [self presentViewController:photo animated:NO completion:^{
+//
+//
+//                }];
+//            });
+//
+//        } completionHandler:^(BOOL success, NSError * _Nullable error) {
+//            NSLog(@"success = %d, error = %@", success, error);
+//        }];
+//    }];
     if (OpenFlash == NO ) {
         [self FlashOn];
     }
 }
-#pragma - 保存至相册
-- (void)saveImageToPhotoAlbum:(UIImage*)savedImage
-{
-    PhotoViewController * photo = [[PhotoViewController alloc]init];
-    photo.PhotoImage = savedImage;
 
-    [self presentViewController:photo animated:NO completion:^{
-//        [self.myGPUImageView removeFromSuperview];
-        [self.myCamera startCameraCapture];
-    }];
-    
-    UIImageWriteToSavedPhotosAlbum(savedImage, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
-    
-}
-// 指定回调方法
 
-- (void)image: (UIImage *) image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo
-
-{
-    NSString *msg = nil ;
-    if(error != NULL){
-        msg = @"保存图片失败" ;
-    }else{
-        msg = @"保存图片成功" ;
-    }
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"保存图片结果提示"
-                                                    message:msg
-                                                   delegate:self
-                                          cancelButtonTitle:@"确定"
-                                          otherButtonTitles:nil];
-    [alert show];
-}
 //取消
 -(void)cancle{
     
-//    [self.myGPUImageView removeFromSuperview];
     [self.myCamera startCameraCapture];
     [self dismissViewControllerAnimated:YES completion:^{
         

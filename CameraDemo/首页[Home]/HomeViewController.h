@@ -9,5 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface HomeViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIView *ViewCDDTit;
 
+@property (weak, nonatomic) IBOutlet UIImageView *ImageHeadView;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *ButLeft;
+
+@property (weak, nonatomic) IBOutlet UIButton *ButRight;
+
+@property (weak, nonatomic) IBOutlet UIView *ViewCycle;
 @end

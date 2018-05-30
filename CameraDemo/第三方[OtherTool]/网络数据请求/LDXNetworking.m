@@ -8,7 +8,9 @@
 
 #import "LDXNetworking.h"
 #import "AFNetworking.h"
-
+#import "AFURLRequestSerialization.h"
+#import "AFHTTPRequestOperation.h"
+#import "AFURLRequestSerialization.h"
 @implementation LDXNetworking
 /** 单例声明 */
 + (instancetype)sharedInstance
@@ -118,7 +120,12 @@
 - (void)POST:(NSString *)URLString parameters:(NSDictionary *)parameters success:(Success)success failure:(Failure)failure
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSMutableString *cookieString = [[NSMutableString alloc] init];
+    [cookieString appendFormat:@"SERVERID=%@;", @"0aeb8247c271f81ac58627137ad242b7|1626225140|1526218781"];
+    [cookieString appendFormat:@"PHPSESSID=%@;", @"jp8f1t1mtkbt51lb7vouddfuk6"];
     
+#warning 添加cookie
+//    [manager.requestSerializer setValue:cookieString forHTTPHeaderField:@"Cookie"];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[@"application/json",
                                                                               @"text/html",
                                                                               @"text/json",
@@ -164,8 +171,14 @@
  */
 - (void)UpLoadWithPOST:(NSString *)URLString parameters:(NSDictionary *)parameters image:(UIImage *)img imageName:(NSString *)imageName fileName:(NSString *)fileName progress:(Progress)progress success:(Success)success failure:(Failure)failure
 {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSMutableString *cookieString = [[NSMutableString alloc] init];
+    [cookieString appendFormat:@"SERVERID=%@;", @"0aeb8247c271f81ac58627137ad242b7|1626225141|1526218781"];
+    [cookieString appendFormat:@"PHPSESSID=%@;", @"jp8f1t1mtkbt51lb7vouddfuk6"];
+#warning 添加cookie
+//    [manager.requestSerializer setValue:cookieString forHTTPHeaderField:@"Cookie"];
+
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",
                                                          @"text/plain",
                                                          @"text/javascript",
@@ -177,7 +190,7 @@
     
     NSURLSessionDataTask *uploadTask = [manager POST:URLString parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
-        NSData *imgData = UIImageJPEGRepresentation(img, 1.0);
+        NSData *imgData = UIImageJPEGRepresentation(img,0.1);
         // 第一个name是后台给图片在服务器上起的字段名，第二个fileName是我们自己起的名字
         [formData appendPartWithFileData:imgData name:imageName fileName:fileName mimeType:@"image/jpeg"];
         
